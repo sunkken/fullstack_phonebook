@@ -13,14 +13,13 @@ GET http://localhost:3001/api/persons/123456789012345678901234
 ### Get a person by malformatted ID
 GET http://localhost:3001/api/persons/12345
 
-
 ### Add a new person
 POST http://localhost:3001/api/persons
 Content-Type: application/json
 
 {
-  "name": "Matti Mattinen",
-  "number": "123456"
+  "name": "Matti Meikäläinen",
+  "number": "12-345678"
 }
 
 ### Add a person with missing name
@@ -28,7 +27,7 @@ POST http://localhost:3001/api/persons
 Content-Type: application/json
 
 {
-  "number": "123456"
+  "number": "12-345678"
 }
 
 ### Add a person with missing number
@@ -39,14 +38,50 @@ Content-Type: application/json
   "name": "Matti Mattinen"
 }
 
-### Update a person by ID
-PUT http://localhost:3001/api/persons/690928344e72c6b226be527b
+### Add a person with name that is too short
+POST http://localhost:3001/api/persons
 Content-Type: application/json
 
 {
-  "name": "Arto Hellas",
-  "number": "040-2345823"
+  "name": "Ma",
+  "number": "12-345678"
+}
+
+### Add a person with number that is too short
+POST http://localhost:3001/api/persons
+Content-Type: application/json
+
+{
+  "name": "Matti Meikäläinen",
+  "number": "12"
+}
+
+### Add a person with invalid number format
+POST http://localhost:3001/api/persons
+Content-Type: application/json
+
+{
+  "name": "Matti Meikäläinen",
+  "number": "1234-432211"
+}
+
+### Update a person by ID
+PUT http://localhost:3001/api/persons/690b0d2f68b72cc928ebe571
+Content-Type: application/json
+
+{
+  "name": "REST Tester",
+  "number": "12-345678"
+}
+
+### Update a person with name that is too short
+PUT http://localhost:3001/api/persons/690b0d2f68b72cc928ebe571
+Content-Type: application/json
+
+{
+  "name": "Ma",
+  "number": "12-345678"
 }
 
 ### Delete a person by ID
-DELETE http://localhost:3001/api/persons/690a41eac61827f332454527
+DELETE http://localhost:3001/api/persons/690b1d30a04e8b14e5175c92
